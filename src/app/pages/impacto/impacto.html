@@ -1,0 +1,14 @@
+<h2>Meu impacto</h2>
+
+<h3>Você já economizou {{ service.totalEconomizado() }} litros! 💧</h3>
+<p>Isso equivale a {{ service.garrafas() }} garrafas de 2 litros.</p>
+
+<p>Meta semanal: {{ service.metaSemanalLitros }} L</p>
+<progress [value]="service.progressoMeta()" max="100"></progress>
+<span> {{ service.progressoMeta().toFixed(0) }}%</span>
+
+@if (service.progressoMeta() >= 100) {
+  <p>🎉 Meta da semana batida, parabéns!</p>
+}
+
+<p>💡 Dica do dia: {{ dicaDoDia }}</p>

@@ -1,0 +1,23 @@
+<h2>Minhas ações de economia</h2>
+
+<div class="form">
+  <select [(ngModel)]="sugestaoEscolhida" (ngModelChange)="preencherSugestao()">
+    <option value="">Escolha uma sugestão...</option>
+    @for (s of sugestoes; track s.nome) {
+      <option [value]="s.nome">{{ s.nome }}</option>
+    }
+  </select>
+
+  <input [(ngModel)]="nome" placeholder="Ou digite sua ação">
+  <input type="number" [(ngModel)]="litros" placeholder="Litros economizados">
+  <button (click)="adicionar()">Adicionar</button>
+</div>
+
+@for (a of service.acoes(); track a.id) {
+  <app-item-acao
+    [acao]="a"
+    (concluir)="service.alternar($event)"
+    (remover)="service.remover($event)" />
+} @empty {
+  <p>Nenhuma ação ainda. Adicione a primeira!</p>
+}

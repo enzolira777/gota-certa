@@ -1,0 +1,7 @@
+<div class="item" [class.feita]="acao().concluida">
+  <span>{{ acao().nome }} ({{ acao().litros }} L)</span>
+  <button (click)="concluir.emit(acao().id)">
+    {{ acao().concluida ? 'Desfazer' : 'Concluir' }}
+  </button>
+  <button (click)="remover.emit(acao().id)">Remover</button>
+</div>
